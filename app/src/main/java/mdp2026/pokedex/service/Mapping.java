@@ -33,4 +33,20 @@ public class Mapping {
 
 
     }
+
+    public static List<Pokemon> getPokemons() {
+        String path = "/Users/lollo/UNI/Metodologie di programmazione/Pokedex/app/src/main/resources/data.json";
+        List<Pokemon> pokemons = null;
+        try {
+            Gson gson = new Gson();
+            FileReader reader = new FileReader(path);
+
+            Type listtype = new TypeToken<List<Pokemon>>() {
+            }.getType();
+            pokemons = gson.fromJson(reader, listtype);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pokemons;
+    }
 }

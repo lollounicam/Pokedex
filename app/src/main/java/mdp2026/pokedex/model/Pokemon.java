@@ -75,6 +75,16 @@ public class Pokemon {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public String toString() {
+        return "🔹 Pokémon #" + numero + "\n" +
+                "Nome: " + nome + "\n" +
+                "Tipo: " + tipo1 + (tipo2 != null ? " / " + tipo2 : "") + "\n" +
+                "Altezza: " + altezza + " m\n" +
+                "Peso: " + peso + " kg\n";
+    }
+
 }
 
 
