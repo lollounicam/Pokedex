@@ -3,10 +3,6 @@ package mdp2026.pokedex.model;
 //{"numero":1,"nome":"Bulbasaur","tipo1":"Erba","tipo2":"Veleno","altezza":0.7,"peso":6.9},
 
 
-import com.google.gson.Gson;
-
-import java.io.FileReader;
-
 public class Pokemon {
     public int numero;
     public String nome;
@@ -14,6 +10,7 @@ public class Pokemon {
     public String tipo2;
     public float altezza;
     public float peso;
+    public boolean discovered;
 
     public int getNumero() {
         return numero;
@@ -63,26 +60,22 @@ public class Pokemon {
         this.peso = peso;
     }
 
-    public static void main(String[] args) {
-        try{
-            Gson gson = new Gson();
+    public boolean isDiscovered() {
+        return discovered;
+    }
 
-            FileReader reader = new FileReader("data.json");
-
-            Pokemon pokemon = gson.fromJson(reader, Pokemon.class);
-            System.out.println(pokemon.getNome());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+    public void stampaDettagli(){
+        System.out.println("🔹 Pokémon #" + numero + "\n" +
+                "Nome: " + nome + "\n" +
+                "Tipo: " + tipo1 + (tipo2 != null ? " / " + tipo2 : "") + "\n" +
+                "Altezza: " + altezza + " m\n" +
+                "Peso: " + peso + " kg\n");
     }
 
     @Override
     public String toString() {
         return "🔹 Pokémon #" + numero + "\n" +
-                "Nome: " + nome + "\n" +
-                "Tipo: " + tipo1 + (tipo2 != null ? " / " + tipo2 : "") + "\n" +
-                "Altezza: " + altezza + " m\n" +
-                "Peso: " + peso + " kg\n";
+                "Nome: " + this.nome;
     }
 
 }
